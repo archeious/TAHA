@@ -1,27 +1,15 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-
-      #wall, #console {
-        border-style: solid;
-        border-width: 1px;
-        margin: 10px;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <title>WordWall</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />     
+    <script src="phaser.js"></script>
+    <script src="app.js"></script>
+    <script src="states/TitleScreenState.js"></script>
   </head>
   <body>
-    <canvas id="wall" width="600" height="600"></canvas>
-    <script type="text/javascript" src="./js/game.js" ></script>
-    <script>
-      var canvas = document.getElementById('wall');
-      var context = canvas.getContext('2d');
-      var wall = new Wall(10, 10);
-      wall.render(context);
-    </script>
+    <div id="content"></div>  
   </body>
 </html>
+ 
