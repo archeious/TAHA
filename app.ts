@@ -22,7 +22,6 @@ module Game {
         
         create() {
             this.game.state.add("TitleScreenState", LGS.TitleScreenState, true);
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         }
     }
 }
