@@ -4,7 +4,7 @@ module Game {
         game: Phaser.Game;
         
         constructor() {
-            this.game = new Phaser.Game(1280, 800, Phaser.AUTO, 'content', {
+            this.game = new Phaser.Game(1024, 768, Phaser.AUTO, 'content', {
                 create: this.create, preload: this.preload                
             });
         }
@@ -12,8 +12,11 @@ module Game {
         preload() {
             
             // Grpahics
-            this.game.load.image('title',"/assets/graphics/space.jpg");
-            
+            this.game.load.image('title',"/assets/graphics/title.png");
+            this.game.load.image('startBtn',"/assets/graphics/start-btn.png");
+            this.game.load.image('space', "/assets/graphics/space.jpg");
+            this.game.load.image('hexBasic', "/assets/graphics/basic-hex.png");
+
             // Spitesheets
             
             // Audio
@@ -21,7 +24,8 @@ module Game {
         }
         
         create() {
-            this.game.state.add("TitleScreenState", LGS.TitleScreenState, true);
+            this.game.state.add("TitleScreenState", TAHA.TitleScreenState, true);
+            this.game.state.add("GameplayState", TAHA.GameplayState);
         }
     }
 }
