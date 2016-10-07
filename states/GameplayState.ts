@@ -4,8 +4,8 @@ module TAHA {
         backgroundImage: Phaser.Sprite;
         hexSpr: Array< Array <Phaser.Sprite> >;
 
-        hexWidth = 54;
-        hexHeight = 64;
+        hexWidth = 52;
+        hexHeight = 62;
         
         constructor() {
             super();            

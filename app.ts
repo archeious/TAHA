@@ -10,8 +10,9 @@ module Game {
         }
         
         preload() {
-            
-            // Grpahics
+            //TODO: This needs to be made into an asset manager of sort.  Loading assets like this is terrible
+            // and I am terrible person for doing it.  
+            // Graphics
             this.game.load.image('title',"/assets/graphics/title.png");
             this.game.load.image('startBtn',"/assets/graphics/start-btn.png");
             this.game.load.image('space', "/assets/graphics/space.jpg");
