@@ -1,2 +1,2 @@
 # Tiny Autonomous Hexapedal Apparatuses
-The Application!
+TAHA lets you control autonomous units.
