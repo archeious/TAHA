@@ -3,6 +3,13 @@ module TAHA {
         game: Phaser.Game;
         backgroundImage: Phaser.Sprite;
         hexSpr: Array< Array <Phaser.Sprite> >;
+        map:Map.BasicMap;
+        mapLayer:Phaser.Group;
+
+        moveLeft:boolean = false;
+        layerPos = {x:0, y:0};
+        moveMax = 200;
+        moveSpeed = 5;
 
         hexWidth = 52;
         hexHeight = 62;
@@ -16,28 +23,28 @@ module TAHA {
             this.backgroundImage.scale.setTo(
                 this.game.width / this.backgroundImage.width,
                 this.game.height / this.backgroundImage.height);
-            
-            this.hexSpr = Array< Array<Phaser.Sprite>>(10);
-            for (let x=0; x < 5; x++) {
-                this.hexSpr[x] = Array<Phaser.Sprite>(10)
-                for (let y=0; y<5; y++) {                    
-                    let yOffset = 0;
-                    console.log(y);
-                    if (x % 2 == 0) {
-                        yOffset = this.hexHeight / 2;
-                    }                   
+            this.mapLayer = this.game.add.group();
+            this.mapLayer.x = this.game.width/2;
+            this.mapLayer.y = this.game.height/2;
+            this.map = new Map.BasicMap(15,8,this.mapLayer);
+        }
 
-
-                    this.hexSpr[x][y] = this.add.sprite(
-                        (this.game.width / 2) + x * this.hexWidth,
-                        (this.game.height / 2) + y * this.hexHeight - yOffset,
-                        "hexBasic");
-                    this.hexSpr[x][y].scale.setTo(
-                        (this.game.width / 15) / this.hexSpr[x][y].width
-                        );
-                    this.hexSpr[x][y].anchor.setTo(0.5);
-                }
+        update() {
+            if (this.moveLeft) {
+                this.layerPos.x -= this.moveSpeed;
+                if (this.layerPos.x < -this.moveMax) {
+                    this.layerPos.x = -this.moveMax;
+                    this.moveLeft = false;
+                }                
             }
+            else {
+                this.layerPos.x += this.moveSpeed;
+                if (this.layerPos.x > this.moveMax) {
+                    this.layerPos.x = this.moveMax;
+                    this.moveLeft = true;
+                }                               
+            }
+            this.mapLayer.x = (this.game.width / 2) + this.layerPos.x;            
         }
     }
 }
